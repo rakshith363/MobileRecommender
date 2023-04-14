@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mobile Phone Predictor</title>
+	
+	<!-- Add Tailwind CSS stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+
+	<style>
+		body {
+			background-color: #f9f9f9;
+		}
+		h1 {
+			margin-bottom: 50px;
+			text-align: center;
+		}
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+		}
+		label {
+			font-weight: 600;
+			margin-bottom: 10px;
+		}
+		select {
+			display: block;
+			width: 100%;
+			padding: 10px 15px;
+			font-size: 16px;
+			line-height: 1.5;
+			color: #495057;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ced4da;
+			border-radius: .25rem;
+			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+		input[type="text"] {
+			display: block;
+			width: 100%;
+			padding: 10px 15px;
+			font-size: 16px;
+			line-height: 1.5;
+			color: #495057;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ced4da;
+			border-radius: .25rem;
+			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+		input[type="submit"] {
+			background-color: #007bff;
+			border-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #0069d9;
+			border-color: #0062cc;
+			color: #fff;
+		}
+	</style>
+</head>
+<body class="bg-gray-100">
+	<div class="container mx-auto px-4 py-8">
+		<h1 class="text-3xl font-bold text-center mt-0 mb-8">Mobile Phone Predictor</h1>
+		<form action="/predict" method="POST" id="my-form" class="bg-white rounded-lg shadow-lg px-6 py-8">
+			<div class="mb-6">
+				<label for="ram" class="font-bold mb-2 block">RAM:</label>
+				<select id="ram" name="ram" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+					<option value="" selected>Select</option>
+					{% for value in [4, 6, 8, 2, 3, 12, 1, 128, 64, 256, 512, 32, 16] %}
+						<option value="{{ value }}">{{ value }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		
+			<div class="mb-4">
+				<label for="storage" class="font-bold mb-2 block">Storage:</label>
+				<select id="storage" name="storage" class="block w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
+					<option value="" selected>Select</option>
+					{% for value in [64, 128, 256, 32, 16, 8, 512, 1] %}
+						<option value="{{ value }}">{{ value }} GB</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="mb-4">
+				<label for="color" class="font-bold mb-2 block">Color:</label>
+				<select id="color" name="color" class="block w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
+					<option value="" selected>Select</option>
+					{% for value in ['blue', 'black', 'gold', 'grey', 'green', 'white', 'silver', 'yellow', 'carbon', 'purple', 'orange', 'pearl', 'cream'] %}
+						<option value="{{ value }}">{{ value }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="mb-4">
+				<label for="front_cam" class="font-bold mb-2 block">Front Camera:</label>
+				<input type="text" id="front_cam" name="front_cam" placeholder="Enter value in Mega Pixels" class="block w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
+			</div>
+			<div class="mb-4">
+				<label for="rear_cam" class="font-bold mb-2 block">Rear Camera:</label>
+				<input type="text" id="rear_cam" name="rear_cam" placeholder="Enter value in Mega Pixels" class="block w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
+			</div>
+			<div>
+			<label for="display" class="block font-bold mb-2">Display:</label>
+			<input type="text" id="display" name="display" placeholder="Enter value in Inches" class="block w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 mb-4">
+			</div>
+			<div>
+			<label for="display_type" class="block font-bold mb-2">Display Type:</label>
+			<select id="display_type" name="display_type" class="block w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 mb-4">
+				<option value="" selected>Select</option>
+				{% for value in ['HD+', 'AMOLED', 'HD', 'XDR', 'Retina'] %}
+					<option value="{{ value }}">{{ value }}</option>
+				{% endfor %}
+			</select>
+			</div>
+			<button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Predict</button>
+    </form>
+
+    </body>
+    </html>
+    
+        

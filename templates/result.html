@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mobile Phone Predictor - Result</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+	{% if prediction_text %}
+	<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" style="text-align: center;" role="alert">
+		<strong class="font-bold">{{ prediction_text }}</strong>
+	</div>
+	<div>
+		<strong class="font-bold">{{ storage }}</strong>
+		<strong class="font-bold">{{ ram }}</strong>
+		<strong class="font-bold">{{ front_cam }}</strong>
+		<strong class="font-bold">{{ rear_cam }}</strong>
+		<strong class="font-bold">{{ color }}</strong>
+		<strong class="font-bold">{{ display }}</strong>
+		<strong class="font-bold">{{ display_type }}</strong>
+	</div>
+	{% endif %}	
+
+	<!-- Recommended by price predicted -->
+	<div class="recommended-for-you bg-gray-100 py-8">
+		<h2 class="text-3xl font-semibold mb-4" style="text-align: center;">Recommended for You Based on Predicted Price</h2>
+		<div>
+			<iframe src="{{ url_for('static', filename='data.html') }}" 
+			frameborder="0" 
+			width="100%" 
+			height="600"></iframe>
+			</div>
+	  </div>
+
+	  <!-- Similar products if no mobiles in price range -->
+	  <div class="similar-products py-8">
+		<h2 class="text-3xl font-semibold mb-4">Similar Products</h2>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+		  <!-- Display similar products here -->
+		  <div class="bg-white rounded-lg shadow-md p-4">
+			<img src="product4.jpg" alt="Product 4" class="w-full">
+			<h3 class="text-lg font-semibold mb-2">Product 4</h3>
+			<p class="text-gray-600">$89.99</p>
+			<button class="bg-blue-500 text-white px-4 py-2 rounded-full mt-4">Add to Cart</button>
+		  </div>
+		  <div class="bg-white rounded-lg shadow-md p-4">
+			<img src="product5.jpg" alt="Product 5" class="w-full">
+			<h3 class="text-lg font-semibold mb-2">Product 5</h3>
+			<p class="text-gray-600">$129.99</p>
+			<button class="bg-blue-500 text-white px-4 py-2 rounded-full mt-4">Add to Cart</button>
+		  </div>
+		  <div class="bg-white rounded-lg shadow-md p-4">
+			<img src="product6.jpg" alt="Product 6" class="w-full">
+			<h3 class="text-lg font-semibold mb-2">Product 6</h3>
+			<p class="text-gray-600">$99.99</p>
+			<button class="bg-blue-500 text-white px-4 py-2 rounded-full mt-4">Add to Cart</button>
+		  </div>
+		  <div class="bg-white rounded-lg shadow-md p-4">
+			<img src="product7.jpg" alt="Product 7" class="w-full">
+			<h3 class="text-lg font-semibold mb-2">Product 7</h3>
+			<p class="text-gray-600">$69.99</p>
+			<button class="bg-blue-500 text-white px-4 py-2 rounded-full mt-4">Add to Cart</button>
+		  </div>
+		</div>
+	  </div>
+
+	  <button onclick="window.history.back();" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search More Devices</button>
+
+</body>
+</html>
